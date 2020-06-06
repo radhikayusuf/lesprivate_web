@@ -13,8 +13,7 @@ exports.ok = function(values, res) {
 exports.empty = function(values, res) {
   var data = {
       'code': 201,
-      'message' : "Result is empty",
-      'data': values
+      'message' : "Result is empty"      
   };
   res.json(data);
   res.end();

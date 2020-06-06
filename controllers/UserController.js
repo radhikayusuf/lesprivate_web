@@ -8,7 +8,7 @@ exports.users = function(req, res) {
         if(error){
             console.log(error)
         } else {            
-            response.empty(rows, res)
+            response.ok(rows, res)
         }
     });
 };
@@ -78,7 +78,7 @@ exports.completeprofile = function(req, res) {
     var notValidField = []
     let body = req.body
 
-    if (body.userId == null || body.userId.trim() == "")
+    if (body.userId == null)
         response.systemError("Error please provide user id.", res)
 
     if (body.phonenumber == null || body.phonenumber.trim() == "")
@@ -89,7 +89,7 @@ exports.completeprofile = function(req, res) {
         let fieldsError = notValidField.length == 0 ? '' : notValidField.join(', ') 
         response.error("Harap isi : " + fieldsError + lastError, res)
     } else {
-        let query = "UPDATE users SET phonenumber = '"+body.phonenumber+"' WHERE id_user = '"+ body.userId +"'";
+        let query = "UPDATE users SET phonenumber = '"+body.phonenumber+"' WHERE id_user = "+ body.userId;
         connection.query(query, function (err, result, fields) {            
             if (err) {
                 response.error(err.sqlMessage, res)
