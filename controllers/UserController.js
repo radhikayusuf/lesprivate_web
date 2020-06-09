@@ -33,7 +33,7 @@ exports.login = function(req, res) {
             if(error || rows.length == 0){
                 response.error("Email atau Kata Sandi salah, harap periksa kembali.", res)
             } else {                
-                response.ok(rows, res)
+                response.ok(rows[0], res)
             }
         });       
     }
