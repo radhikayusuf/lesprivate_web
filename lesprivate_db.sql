@@ -16,8 +16,11 @@ CREATE TABLE users(
 
 CREATE TABLE detail_schedule(
     id_detail_schedule INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    schedule_time TIMESTAMP NOT NULL,
+    id_schedule INT(11),
+    title VARCHAR(50) NOT NULL,
+    schedule_time BIGINT(25) NOT NULL,
     location VARCHAR(50) NOT NULL,
+    detail_location VARCHAR(50) NOT NULL,
     lat DOUBLE NOT NULL,
     lang DOUBLE NOT NULL
 );
@@ -32,8 +35,7 @@ CREATE TABLE curriculum(
 CREATE TABLE schedules(
     id_schedule INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     id_teacher INT(11),
-    id_user INT(11),
-    id_detail_schedule INT(11),
+    id_user INT(11),    
     id_curriculum INT(11),
     is_approved INT(1) DEFAULT 0 NOT NULL
 );

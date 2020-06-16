@@ -3,6 +3,7 @@
 module.exports = function(app) {
     var userController = require('./controllers/UserController');
     var curriculumController = require('./controllers/CurriculumController');
+    let scheduleController = require('./controllers/ScheduleController');
 
     app.route('/users')
         .get(userController.users);
@@ -30,4 +31,10 @@ module.exports = function(app) {
 
     app.route('/curriculum/delete/:id/')
         .post(curriculumController.deleteById)
+    
+    app.route('/schedule/create')
+        .post(scheduleController.create)
+
+    app.route('/schedule')
+        .get(scheduleController.schedule);
 };
